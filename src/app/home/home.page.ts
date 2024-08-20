@@ -18,13 +18,40 @@ export class HomePage {
   }
   // this.recado.mensagem 
 
-
+  recados: any =[];
   constructor(
-    private crudservice: CrudService
+    public crudservice: CrudService
   ){}
   enviar(){
     this.crudservice.insert(this.recado,'recados');
   }
+  
+ 
+
+  carregar(){
+    this.recados = [];
+    this.crudservice.fetchAll('recados')
+    .then((response)=>{
+      this.recados = response;
+
+    }) //tiver sucesso
+
+    .catch((erro)=>{
+      console.log(erro);
+    })//ocorrer um erro
+
+    .finally(()=>{
+      console.log('processo finalizado!');
+    }) // quanto finalizar a requisição
+  }
+  remover(id:string){
+    this.crudservice.remove(id, 'recados');
+    this.carregar();
+  }
+
+
+
+
   
   pessoa = {
     foto:'https://professionalmoron.com/wp-content/uploads/2012/05/alpaca-985158_640.jpg',
