@@ -17,6 +17,7 @@
       </ion-item>
       
         <ion-button (click)="enviar()">Enviar Recado!</ion-button>
+        <ion-button (click)="atualizar()">Atualizar Recado!</ion-button>
     </ion-col>
   </ion-row>
   <!-- Listagem das mensagens-->
@@ -35,6 +36,7 @@
             <h3>Assunto: {{ recado.assunto }}</h3>
             <h3>Mensagem: {{ recado.mensagem }}</h3>
           </ion-label>
+          <ion-icon  name="create-outline" (click)="selecionar(recado)"></ion-icon>
           <ion-icon slot="end" name="trash-outline" (click)="remover(recado.id)"></ion-icon>
         </ion-item>
       </ng-container>
@@ -42,5 +44,47 @@
 	
 	</ion-col>
 </ion-row>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="5">
+      <ion-item lines="none">
+        <ion-label>
+          <h1>Regsitrar-se</h1>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-input labe="email" [(ngModel)]="this.usuario.email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input labe="senha" type="password" [(ngModel)]="this.usuario.senha"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="registrar()">Regsitrar-se</ion-button>
+
+    </ion-col>
+  </ion-row>
+
+
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="5">
+      <ion-item lines="none">
+        <ion-label>
+          <h1>Acesso</h1>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-input labe="email" [(ngModel)]="this.usuario.email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input labe="senha" type="password" [(ngModel)]="this.usuario.senha"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="login()">Acessar</ion-button>
+
+    </ion-col>
+  </ion-row>
 
 </ion-content>

@@ -12,7 +12,16 @@ import { MessageService } from '../services/message.service';
 
 
 export class HomePage {
+
+  usuario: any = {
+    email:null,
+    senha:null
+  }
+
+  id:any;
+
   recado = {
+    id:null,
     assunto:null,
     mensagem: null
   }
@@ -20,7 +29,8 @@ export class HomePage {
 
   recados: any =[];
   constructor(
-    public crudservice: CrudService
+    public crudservice: CrudService,
+    public authService: AuthenticateService
   ){}
   enviar(){
     this.crudservice.insert(this.recado,'recados');
@@ -48,6 +58,34 @@ export class HomePage {
     this.crudservice.remove(id, 'recados');
     this.carregar();
   }
+  selecionar(recado: any){
+    this.recado = recado;
+   this.id = recado.id;
+  }
+  atualizar(){
+    this.crudservice.update(this.id, this.recado, 'recados');
+  }
+  registrar(){
+    this.authService.register(this.usuario.email, this.usuario.senha);
+  }
+  login(){
+    this.authService.login(this.usuario.email, this.usuario.senha);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
