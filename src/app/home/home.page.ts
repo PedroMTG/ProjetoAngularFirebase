@@ -43,9 +43,6 @@ export class HomePage {
 
 
 
-
-
-
   // usuario: any = {
   //   email:null,
   //   senha:null
