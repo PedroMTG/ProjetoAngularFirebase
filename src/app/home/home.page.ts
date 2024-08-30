@@ -11,66 +11,99 @@ import { MessageService } from '../services/message.service';
 })
 
 
+ 
 export class HomePage {
+  paises: any;
 
-  usuario: any = {
-    email:null,
-    senha:null
+  constructor(){
+    this.getPaises();
   }
 
-  id:any;
-
-  recado = {
-    id:null,
-    assunto:null,
-    mensagem: null
+  getPaises(){
+    fetch('https://restcountries.com/v3.1/all?fields=ccn3,flags,name')
+    .then(dados => dados.json())
+    .then(dados => {
+      console.log(dados);
+      this.paises = dados;
+    })
+    .catch(erro=>{
+      console.log(erro);
+    })
+    .finally(()=>{
+      console.log('processo finalizado');
+    })
   }
-  // this.recado.mensagem 
 
-  recados: any =[];
-  constructor(
-    public crudservice: CrudService,
-    public authService: AuthenticateService
-  ){}
-  enviar(){
-    this.crudservice.insert(this.recado,'recados');
-  }
+
+} 
+
+
+
+
+
+
+
+
+
+
+  // usuario: any = {
+  //   email:null,
+  //   senha:null
+  // }
+
+  // id:any;
+
+  // recado = {
+  //   id:null,
+  //   assunto:null,
+  //   mensagem: null
+  // }
+  // // this.recado.mensagem 
+
+  // recados: any =[];
+  // constructor(
+  //   public crudservice: CrudService,
+  //   public authService: AuthenticateService
+  // ){}
+  // enviar(){
+  //   this.crudservice.insert(this.recado,'recados');
+  // }
   
  
 
-  carregar(){
-    this.recados = [];
-    this.crudservice.fetchAll('recados')
-    .then((response)=>{
-      this.recados = response;
+  // carregar(){
+  //   this.recados = [];
+  //   this.crudservice.fetchAll('recados')
+  //   .then((response)=>{
+  //     this.recados = response;
 
-    }) //tiver sucesso
+  //   }) //tiver sucesso
 
-    .catch((erro)=>{
-      console.log(erro);
-    })//ocorrer um erro
+  //   .catch((erro)=>{
+  //     console.log(erro);
+  //   })//ocorrer um erro
 
-    .finally(()=>{
-      console.log('processo finalizado!');
-    }) // quanto finalizar a requisição
-  }
-  remover(id:string){
-    this.crudservice.remove(id, 'recados');
-    this.carregar();
-  }
-  selecionar(recado: any){
-    this.recado = recado;
-   this.id = recado.id;
-  }
-  atualizar(){
-    this.crudservice.update(this.id, this.recado, 'recados');
-  }
-  registrar(){
-    this.authService.register(this.usuario.email, this.usuario.senha);
-  }
-  login(){
-    this.authService.login(this.usuario.email, this.usuario.senha);
-  }
+  //   .finally(()=>{
+  //     console.log('processo finalizado!');
+  //   }) // quanto finalizar a requisição
+  // }
+  // remover(id:string){
+  //   this.crudservice.remove(id, 'recados');
+  //   this.carregar();
+  // }
+  // selecionar(recado: any){
+  //   this.recado = recado;
+  //  this.id = recado.id;
+  // }
+  // atualizar(){
+  //   this.crudservice.update(this.id, this.recado, 'recados');
+  // }
+  // registrar(){
+  //   this.authService.register(this.usuario.email, this.usuario.senha);
+  // }
+  // login(){
+  //   this.authService.login(this.usuario.email, this.usuario.senha);
+  // }
 
 
 
@@ -91,46 +124,46 @@ export class HomePage {
 
 
   
-  pessoa = {
-    foto:'https://professionalmoron.com/wp-content/uploads/2012/05/alpaca-985158_640.jpg',
-    nome:'Leticia Foelho',
-    objetivo:'Programador HTML & CSS',
-    contato:{
-      email:'jujaja@gbail.com',
-      telefone:'99991-9999',
-      github:'github.com/babayaga',
-      linkedin:'linkedin.com/babayaga'
-    },
-    softskills:[
-      'comunicação',
-      'proatividade',
-      'trabalho em grupo'
-    ],
+//   pessoa = {
+//     foto:'https://professionalmoron.com/wp-content/uploads/2012/05/alpaca-985158_640.jpg',
+//     nome:'Leticia Foelho',
+//     objetivo:'Programador HTML & CSS',
+//     contato:{
+//       email:'jujaja@gbail.com',
+//       telefone:'99991-9999',
+//       github:'github.com/babayaga',
+//       linkedin:'linkedin.com/babayaga'
+//     },
+//     softskills:[
+//       'comunicação',
+//       'proatividade',
+//       'trabalho em grupo'
+//     ],
 
-    formacao:[
-    {
-      ano_inicio:'2022',
-      ano_fim:'2025',
-      instituicao:'Etec Sales Gomes',
-      cursos:'Técnico em Desenvolvimento de sistemas'
-    },
-    {
-      ano_inicio:'2025',
-      ano_fim:'2027',
-      instituicao:'Faculdade de Tecnologia',
-      cursos:'Superior em analise e desenvolvimento de sistemas'
-    }
-  ],
+//     formacao:[
+//     {
+//       ano_inicio:'2022',
+//       ano_fim:'2025',
+//       instituicao:'Etec Sales Gomes',
+//       cursos:'Técnico em Desenvolvimento de sistemas'
+//     },
+//     {
+//       ano_inicio:'2025',
+//       ano_fim:'2027',
+//       instituicao:'Faculdade de Tecnologia',
+//       cursos:'Superior em analise e desenvolvimento de sistemas'
+//     }
+//   ],
   
-  projeto:[
-    {
-      ano:'2023',
-      instituicao:'Etec Sales Gomes',
-      nome_projeto: 'Etec de Portas Abertas',
-      descricao:'Lorem'
-    }
-  ]
+//   projeto:[
+//     {
+//       ano:'2023',
+//       instituicao:'Etec Sales Gomes',
+//       nome_projeto: 'Etec de Portas Abertas',
+//       descricao:'Lorem'
+//     }
+//   ]
 
-  }
+//   }
 
-}
+// }

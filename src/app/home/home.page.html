@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-  <ion-button routerLink="/desenvolvedor">Desenvolvedores</ion-button>
+  <!-- <ion-button routerLink="/desenvolvedor">Desenvolvedores</ion-button>
 
   <ion-row class="ion-justify-content-center">
     <ion-col size="12"  size-lg="8" size-xl="6">
@@ -15,17 +15,17 @@
       <ion-item>
         <ion-input label="mensagem"[(ngModel)]="this.recado.mensagem"></ion-input>
       </ion-item>
-      
+       
         <ion-button (click)="enviar()">Enviar Recado!</ion-button>
         <ion-button (click)="atualizar()">Atualizar Recado!</ion-button>
     </ion-col>
   </ion-row>
-  <!-- Listagem das mensagens-->
+   Listagem das mensagens
 <ion-row class="ion-justify-content-center">
 	<ion-col size="12" size-lg="6">
 		<ion-button (click)="carregar()">Carregar Dados</ion-button>
 
-    <ng-container *ngIf="this.crudservice.isLoading"> <!-- ng faz não renderizar-->
+    <ng-container *ngIf="this.crudservice.isLoading">  ng faz não renderizar'
       <ion-spinner></ion-spinner>
     </ng-container>
     
@@ -85,6 +85,6 @@
       <ion-button (click)="login()">Acessar</ion-button>
 
     </ion-col>
-  </ion-row>
+  </ion-row> -->
 
 </ion-content>
